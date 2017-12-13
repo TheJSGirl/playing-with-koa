@@ -9,7 +9,7 @@ async function getData() {
 
 async function create(ctx, data) {
   console.log(data);
-  const notes = new Notes({ notes: ctx.request.body.notes });
+  const notes = new Notes(data);
   console.log('notes-----------------', notes);
   await notes.save();
   return notes;

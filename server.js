@@ -4,6 +4,8 @@ const Router = require('koa-router');
 require('./src/config');
 require('./src/db');
 const noteRoutes = require('./src/notes/routes');
+const body = require('koa-better-body');
+
 
 const app = new Koa();
 const router = new Router();
@@ -32,7 +34,8 @@ const port = process.env.PORT;
 // });
 router.use(...['', noteRoutes.routes()]);
 app
-  .use(require('koa-body')())
+  // .use(require('koa-body')())
+  .use(body())
   .use(router.routes())
   .use(router.allowedMethods());
 
