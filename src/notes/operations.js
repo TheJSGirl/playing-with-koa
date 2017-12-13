@@ -6,6 +6,10 @@ async function getData() {
   return allNotes;
 }
 
+async function getOne(id) {
+  const getOneNote = await Notes.findById(id);
+  return getOneNote;
+}
 
 async function create(ctx, data) {
   console.log(data);
@@ -22,8 +26,10 @@ async function remove(id) {
   return notesToBeDeleted;
 }
 
+
 module.exports = {
   getData,
+  getOne,
   create,
   remove,
 };
