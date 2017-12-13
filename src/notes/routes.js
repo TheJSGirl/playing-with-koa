@@ -4,8 +4,8 @@ const views = require('./views');
 
 const router = new Router();
 
-router.prefix('/notes');
-router.get('/', views.get);
+router.prefix('/api/notes');
+router.get('', '/', views.get);
 
 
 module.exports = router;

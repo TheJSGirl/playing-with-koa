@@ -13,6 +13,6 @@ const NoteSchema = new Schema({
 const Notes = mongoose.model('note', NoteSchema);
 
 // Notes.insertMany({
-//   notes: 'learn react',
+//   notes: 'learn react' ,
 // });
 module.exports = Notes;

@@ -1,11 +1,17 @@
 const json = (ctx, payload) => {
+  console.log('payload---', payload);
+  
   ctx.set('Content-Type', 'appilication/json');
   ctx.body = payload;
 };
-const successJson = (ctx, data, statusCode) => {
+
+const successJson = async (ctx, data, statusCode) => {
+  // console.log(data.next);=
   ctx.status = parseInt(statusCode, 10) || 200;
+  console.log('****data:', data);
   json(ctx, { success: true, data });
 };
+
 const errorJson = (ctx, e) => {
   const err = {
     code: e.code || 500,
@@ -14,6 +20,7 @@ const errorJson = (ctx, e) => {
   ctx.status = parseInt(err.code, 10);
   json(ctx, { success: false, error: err });
 };
+
 
 module.exports = {
   successJson,

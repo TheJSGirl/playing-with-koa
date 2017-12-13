@@ -3,18 +3,12 @@ const Koa = require('koa');
 const Router = require('koa-router');
 require('./src/config');
 require('./src/db');
-const Note = require('./src/notes/model');
 const noteRoutes = require('./src/notes/routes');
-const { successJson, errorJson } = require('./utils/responses');
-
 
 const app = new Koa();
 const router = new Router();
 const port = process.env.PORT;
 
-
-app.use(successJson);
-app.use(errorJson);
 
 // // GET route
 // router.get('/notes', async (ctx) => {

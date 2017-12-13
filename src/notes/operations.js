@@ -1,15 +1,9 @@
 const Notes = require('./model');
 
-async function find() {
-  try {
-    const allNotes = await Notes.find({});
-    console.log(Notes);
-    // console.log(allNotes);
-    return allNotes;
-  } catch (err) {
-    console.log(err);
-    throw new Error(err);
-  }
+async function getData() {
+  const allNotes = await Notes.find({});
+  // console.log('-------------', allNotes);
+  return allNotes;
 }
 
 
@@ -27,7 +21,7 @@ async function remove(id) {
 }
 
 module.exports = {
-  find,
+  getData,
   create,
   remove,
 };
