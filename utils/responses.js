@@ -1,14 +1,12 @@
 const json = (ctx, payload) => {
-  console.log('payload---', payload);
-  
-  ctx.set('Content-Type', 'appilication/json');
+  // console.log('payload---', payload);
+  ctx.set('Content-Type', 'application/json');
   ctx.body = payload;
 };
 
 const successJson = async (ctx, data, statusCode) => {
-  // console.log(data.next);=
   ctx.status = parseInt(statusCode, 10) || 200;
-  console.log('****data:', data);
+  // console.log('****data:', data);
   json(ctx, { success: true, data });
 };
 

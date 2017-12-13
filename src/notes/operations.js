@@ -7,8 +7,10 @@ async function getData() {
 }
 
 
-async function create(data) {
-  const notes = new Notes(data);
+async function create(ctx, data) {
+  console.log(data);
+  const notes = new Notes({ notes: ctx.request.body.notes });
+  console.log('notes-----------------', notes);
   await notes.save();
   return notes;
 }
