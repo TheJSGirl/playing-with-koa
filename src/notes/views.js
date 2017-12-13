@@ -21,7 +21,7 @@ async function postData(ctx) {
 
 async function del(ctx) {
   const { id } = ctx.params;
-  const result = await operations.del(id);
+  const result = await operations.remove(id);
   responses.successJson(ctx, result, 200);
 }
 
