@@ -1,6 +1,6 @@
 // this file will contain the seed data
 const { ObjectID } = require('mongodb');
-const Notes = require('../../model');
+const Notes = require('../../src/notes/model');
 
 // create an id for Notes
 const noteOne = new ObjectID();

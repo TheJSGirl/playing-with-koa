@@ -40,6 +40,7 @@ app
   .use(router.allowedMethods());
 
 // and then give it a port to listen for
-app.listen(port);
-console.log('Koa listening on port', port);
+// app.listen(port);
+// console.log('Koa listening on port', port);
 
+module.exports = app.listen(port);
