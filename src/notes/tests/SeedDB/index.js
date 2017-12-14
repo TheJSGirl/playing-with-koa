@@ -11,15 +11,15 @@ const dummyData = [
 
   {
     _id: noteOne,
-    notes: 'dummy data one'
+    notes: 'dummy data one',
   },
   {
     _id: noteTwo,
-    notes: 'dummy data two'
+    notes: 'dummy data two',
   },
   {
     _id: noteThree,
-    notes: 'dummy data three'
+    notes: 'dummy data three',
   },
 ];
 
