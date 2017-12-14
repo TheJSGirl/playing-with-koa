@@ -12,9 +12,9 @@ async function getOne(id) {
 }
 
 async function create(ctx, data) {
-  console.log(data);
+  // console.log(data);
   const notes = new Notes(data);
-  console.log('notes-----------------', notes);
+  // console.log('notes-----------------', notes);
   await notes.save();
   return notes;
 }

@@ -8,17 +8,16 @@ const noteTwo = new ObjectID();
 const noteThree = new ObjectID();
 
 const dummyData = [
-
   {
-    _id: noteOne,
+    id: noteOne,
     notes: 'dummy data one',
   },
   {
-    _id: noteTwo,
+    id: noteTwo,
     notes: 'dummy data two',
   },
   {
-    _id: noteThree,
+    id: noteThree,
     notes: 'dummy data three',
   },
 ];

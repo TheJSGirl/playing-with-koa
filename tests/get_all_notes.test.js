@@ -1,5 +1,5 @@
-const request = require('supertest');
 const app = require('../server');
+const request = require('supertest');
 const expect = require('expect');
 const { populatedData } = require('./SeedDB');
 
