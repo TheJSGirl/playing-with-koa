@@ -1,6 +1,6 @@
 const app = require('../server');
 const request = require('supertest');
-// const expect = require('expect');
+const expect = require('expect');
 const { populatedData, dummyData } = require('./SeedDB');
 
 beforeEach(populatedData);
@@ -13,9 +13,9 @@ describe('DELETE note ENDPOINT is: /api/notes/:id', () => {
       .delete(`/api/notes/${validNoteId}`)
       .expect(200)
       .end((err, response) => {
-        // expect(response.body.success).toBe(true);
-        console.log(response.body);
-        console.error(err.body);
+        expect(response.body.success).toBe(true);
+        // console.log(response.body);
+        // console.error(err.body);
 
         done();
       });
