@@ -21,8 +21,6 @@ async function create(ctx, data) {
 
 async function remove(id) {
   const notesToBeDeleted = await Notes.findById(id);
-  await notesToBeDeleted.remove();
-
   return notesToBeDeleted;
 }
 
