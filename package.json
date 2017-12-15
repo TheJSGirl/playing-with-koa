@@ -11,6 +11,7 @@
   "author": "Priyanka",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "expect": "^21.2.1",
     "koa": "^2.4.1",
     "koa-better-body": "^3.0.4",
