@@ -9,6 +9,11 @@ async function get(ctx) {
 
 async function getOne(ctx) {
   const { id } = ctx.params;
+  // check if Id is valid by matching with a regex
+  const checkForHexRegExp = /^(?=[a-f\d]{24}$)(\d+[a-f]|[a-f]+\d)/i;
+  if (!checkForHexRegExp.test(id)) {
+    return responses.errorJson(ctx, { code: 400, msg: 'Invalid Id' });
+  }
   const result = await operations.getOne(id);
   responses.successJson(ctx, result, 200);
 }

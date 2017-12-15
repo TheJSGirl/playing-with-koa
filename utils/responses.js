@@ -10,14 +10,22 @@ const successJson = async (ctx, data, statusCode) => {
   json(ctx, { success: true, data });
 };
 
-const errorJson = (ctx, e) => {
+
+/**
+ * This function will be used to send error
+ * response to the client
+ *
+ * @param {object} ctx - the context object of Koa
+ * @param {object} err object containing msg and code
+ */
+function errorJson(ctx, error) {
   const err = {
-    code: e.code || 500,
-    message: e.message || e.msg,
+    code: error.code || 500,
+    message: error.message || error.msg,
   };
   ctx.status = parseInt(err.code, 10);
   json(ctx, { success: false, error: err });
-};
+}
 
 
 module.exports = {

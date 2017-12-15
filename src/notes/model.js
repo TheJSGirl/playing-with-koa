@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const NoteSchema = new Schema({
   notes: {
     type: String,
-    // required: [true, 'notes is required'],
+    required: [true, 'notes is required'],
   },
 
 });
