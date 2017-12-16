@@ -21,6 +21,7 @@
     "koa-router": "^7.3.0",
     "mongodb": "^3.0.0-rc0",
     "mongoose": "^4.13.6",
+    "njs": "git+https://7halo.codebasehq.com/nascence/njs3.git",
     "supertest": "^3.0.0"
   },
   "devDependencies": {
