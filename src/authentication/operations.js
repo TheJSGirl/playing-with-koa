@@ -70,6 +70,8 @@ async function signInUser(ctx, data) {
 async function signOutUser(token) {
   console.log('token-----',token);
   await Token.findOneAndRemove({ token });
+
+  // how to delete session explicitly
   return {};
 }
 
