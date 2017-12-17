@@ -6,17 +6,17 @@ const _ = require('lodash');
 const baseSettings = require('./base');
 
 const settings = {
-  port: 3000,
+  port: 3030,
   database: {
     host: 'localhost',
     port: 27017,
-    db: 'test-njs',
+    db: 'note-app',
   },
   sessions: {
     store: {
       host: 'localhost',
       port: 27017,
-      db: 'test-njs',
+      db: 'note-app',
       collection: 'sessions',
     },
   },

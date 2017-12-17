@@ -27,7 +27,7 @@ module.exports = {
     store: {
       host: '127.0.0.1',
       port: 27017,
-      db: 'test-njs',
+      db: 'note-app',
       collection: 'sessions',
     },
     cookie: {

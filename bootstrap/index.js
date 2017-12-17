@@ -9,6 +9,5 @@ module.exports = function bootstrap(config) {
   // Make njs.app.use to bind middlewares;
   njs.app.use(responses);
   njs.app.use(routes.routes());
-
   return njs.app;
 };
