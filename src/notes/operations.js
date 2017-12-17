@@ -2,7 +2,7 @@ const Notes = require('./model');
 
 async function getData() {
   const allNotes = await Notes.find({});
-  // console.log('-------------', allNotes);
+  console.log('-------------', allNotes);
   return allNotes;
 }
 

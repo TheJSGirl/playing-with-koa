@@ -19,6 +19,7 @@
     "koa-body-parser": "^1.1.2",
     "koa-route": "^3.2.0",
     "koa-router": "^7.3.0",
+    "lodash": "^4.17.4",
     "mongodb": "^3.0.0-rc0",
     "mongoose": "^4.13.6",
     "mongoose-plugins": "git+https://7halo.codebasehq.com/nascence/mongoose-plugins.git",

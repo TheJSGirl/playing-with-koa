@@ -1,18 +1,26 @@
 const errors = require('njs/lib/errors');
 const Token = require('../authentication/model');
+const User = require('../users/model');
 
 module.exports = async function checkAuth(ctx, next) {
-  if (!ctx.request.session || !ctx.request.header.token) {
-    throw new errors.NotAllowed('Please login to continue');
+  if (!ctx.request.header.token) {
+    throw new errors.UnauthorizedAccess('Please login to continue');
   }
   const { token } = ctx.request.header;
   const tokenFromDb = await Token.findOne({ token });
 
-  const isExpired = tokenFromDb.expires.getTime() > new Date().getTime();
+  const isValid = new Date(tokenFromDb.expires).getTime() > new Date().getTime();
   // check the token is expired or not
-  if (isExpired) {
-    throw new errors.NotAllowed('Token expired');
+  if (!isValid) {
+    throw new errors.UnauthorizedAccess('Token expired');
   }
-  
+  // get user from DB 
+  const user = await User.findOne({ _id: tokenFromDb.user });
+
+  const userData = JSON.parse(JSON.stringify(user));
+  delete userData.password;
+  delete userData.__v;  
+
+  ctx.request.user = userData;
   next();
 };
