@@ -64,10 +64,17 @@ async function signInUser(ctx, data) {
   const userData = JSON.parse(JSON.stringify(user));
   delete userData.password;
   delete userData.__v;
-  return [userData, token];
+  return [userData, token, true];
+}
+
+async function signOutUser(token) {
+  console.log('token-----',token);
+  await Token.findOneAndRemove({ token });
+  return {};
 }
 
 module.exports = {
   createUser,
   signInUser,
+  signOutUser,
 };
