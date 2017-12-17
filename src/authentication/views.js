@@ -15,6 +15,14 @@ async function signUp(ctx) {
   ctx.successJson(result);
 }
 
+function formateResponse(user, token) {
+  return {
+    user,
+    token,
+  }
+}
+
+
 async function signIn(ctx) {
   const data = ctx.request.fields;
   console.log('---data', data);
@@ -27,7 +35,8 @@ async function signIn(ctx) {
     ctx.session[sessionKey] = response[1];
     ctx.isAuthenticated = response[2];
   }
-  ctx.successJson(response);
+  const formattedRes = formateResponse(response[0], response[1]);
+  ctx.successJson(formattedRes);
 }
 
 

@@ -64,7 +64,7 @@ async function signInUser(ctx, data) {
   const userData = JSON.parse(JSON.stringify(user));
   delete userData.password;
   delete userData.__v;
-  return [userData, token, true];
+  return [userData, token];
 }
 
 module.exports = {
