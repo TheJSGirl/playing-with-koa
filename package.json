@@ -23,6 +23,7 @@
     "mongoose": "^4.13.6",
     "mongoose-plugins": "git+https://7halo.codebasehq.com/nascence/mongoose-plugins.git",
     "njs": "git+https://7halo.codebasehq.com/nascence/njs3.git",
+    "randomstring": "^1.1.5",
     "supertest": "^3.0.0",
     "validator": "^9.2.0"
   },

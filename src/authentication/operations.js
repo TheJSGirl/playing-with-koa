@@ -3,6 +3,7 @@ const Token = require('./model');
 const validator = require('validator');
 const errors = require('njs/lib/errors');
 const bcrypt = require('bcrypt');
+const tokenGenator = require('../../utils/tokenGenerator');
 
 async function createUser(ctx, data) {
   console.log('**data inside create user=>', data);
@@ -51,7 +52,19 @@ async function signInUser(ctx, data) {
   if (!isValidPassword) {
     throw new errors.InvalidData('invalid password');
   }
-  console.log('password correct');
+
+  // since password is correct we should generate token
+  const token = tokenGenator(email);
+
+  // now save toke with userId in token collection
+  const newToken = new Token({ token, user: user._id });
+  await newToken.save();
+
+  // delete password field from user object
+  const userData = JSON.parse(JSON.stringify(user));
+  delete userData.password;
+  delete userData.__v;
+  return [userData, token, true];
 }
 
 module.exports = {
