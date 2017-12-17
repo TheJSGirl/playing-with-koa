@@ -10,7 +10,16 @@ async function signUp(ctx) {
   ctx.successJson(result);
 }
 
+async function signIn(ctx) {
+  const data = ctx.request.fields;
+
+  const result = await operations.signInUser(ctx, data);
+
+  ctx.successJson(result);
+}
+
 
 module.exports = {
   signUp,
+  signIn,
 };

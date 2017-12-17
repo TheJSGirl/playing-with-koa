@@ -9,7 +9,7 @@ async function createUser(ctx, data) {
 
   const { name, email, password } = data;
 
-  if (name && `${name}`.length < 3) {
+  if (!name || `${name}`.length < 3) {
     throw new errors.InvalidData('Name minimum 3 characters');    
   }
 
@@ -18,7 +18,7 @@ async function createUser(ctx, data) {
     throw new errors.InvalidData('Invalid Email');
   }
 
-  if (password && `${password}`.length < 5) {
+  if (!password || `${password}`.length < 5) {
     throw new errors.InvalidData('Password is too short, minimum 5 chars');
   }
 
@@ -26,6 +26,15 @@ async function createUser(ctx, data) {
   await userData.save();
 }
 
+// async function signInUser(ctx, data) {
+  
+//   const {name, password} = data;
+
+//   if(`name: ${name}`)
+
+// }
+
 module.exports = {
   createUser,
+  // signInUser,
 };
