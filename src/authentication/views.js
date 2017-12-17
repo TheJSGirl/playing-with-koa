@@ -2,7 +2,7 @@ const operations = require('./operations');
 
 async function signUp(ctx) {
   const data = ctx.request.fields;
-  console.log('data-----', data);
+  // console.log('data-----', data);
 
   const result = await operations.createUser(ctx, data);
 
@@ -12,7 +12,7 @@ async function signUp(ctx) {
 
 async function signIn(ctx) {
   const data = ctx.request.fields;
-
+  console.log('---data', data);
   const result = await operations.signInUser(ctx, data);
 
   ctx.successJson(result);
