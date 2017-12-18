@@ -1,7 +1,7 @@
 const errors = require('njs/lib/errors');
 const Token = require('../authentication/model');
 const User = require('../users/model');
-const deleteObj = require('../../utils/deleteObject');
+const secureUserData = require('../../utils/secureUserData');
 
 module.exports = async function checkAuth(ctx, next) {
   console.log('--------------middleware ctx', ctx);
@@ -23,7 +23,7 @@ module.exports = async function checkAuth(ctx, next) {
   // delete userData.password;
   // delete userData.__v;
 
-  const userData = deleteObj(user);
+  const userData = secureUserData(user);
 
   ctx.request.user = userData;
   await next();

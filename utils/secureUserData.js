@@ -1,4 +1,4 @@
-module.exports = function deleteObj(obj) {
+module.exports = function secureUserData(obj) {
   const newObj = JSON.parse(JSON.stringify(obj));
   delete newObj.password;
   delete newObj._v;
