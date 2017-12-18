@@ -26,5 +26,5 @@ module.exports = async function checkAuth(ctx, next) {
   const userData = deleteObj(user);
 
   ctx.request.user = userData;
-  next();
+  await next();
 };
