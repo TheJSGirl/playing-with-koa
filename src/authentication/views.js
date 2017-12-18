@@ -6,21 +6,31 @@ const allowSession = config.sessions && config.sessions.enabled;
 const key = config.authentication.tokenKey || 'authToken';
 const sessionKey = allowSession ? key : '';
 
-async function signUp(ctx) {
-  const data = ctx.request.fields;
-  // console.log('data-----', data);
-
-  const result = await operations.createUser(ctx, data);
-
-  // successJson is provided in ctx by /bootstrap/middlewares/responses.js
-  ctx.successJson(result);
-}
 
 function formateResponse(user, token) {
   return {
     user,
     token,
   };
+}
+
+async function signUp(ctx) {
+  const data = ctx.request.fields;
+  // console.log('data-----', data);
+
+  const response = await operations.createUser(ctx, data);
+
+  if (allowSession) {
+    ctx.session = {};
+
+    // store token in session
+    ctx.session[key] = response[1];
+    ctx.isAuthenticated = response[2];
+  }
+  const formatedRes = formateResponse(response[0], response[1]);   
+
+  // successJson is provided in ctx by /bootstrap/middlewares/responses.js
+  ctx.successJson(formatedRes);
 }
 
 
@@ -37,8 +47,8 @@ async function signIn(ctx) {
     ctx.isAuthenticated = response[2];
     // console.log('making', ctx.session);
   }
-  const formattedRes = formateResponse(response[0], response[1]);
-  ctx.successJson(formattedRes);
+  const formatedRes = formateResponse(response[0], response[1]);
+  ctx.successJson(formatedRes);
 }
 
 async function signOut(ctx) {
