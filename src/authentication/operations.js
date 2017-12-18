@@ -25,7 +25,14 @@ async function createUser(ctx, data) {
   }
 
   const userData = new User(data);
-  await userData.save();
+  const newUser = await userData.save();
+
+  const token = tokenGenator(email);
+  const newToken = new Token({token, user: newUser._id});
+  newToken.save();
+
+  const userDetail = secureUserData(newUser);
+  return [userDetail, token, true];
 }
 
 async function signInUser(ctx, data) {
