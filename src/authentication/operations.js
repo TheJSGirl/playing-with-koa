@@ -4,7 +4,7 @@ const validator = require('validator');
 const errors = require('njs/lib/errors');
 const bcrypt = require('bcrypt');
 const tokenGenator = require('../../utils/tokenGenerator');
-const deleteObj = require('../../utils/deleteObject');
+const secureUserData = require('../../utils/secureUserData');
 
 async function createUser(ctx, data) {
   console.log('**data inside create user=>', data);
@@ -65,7 +65,7 @@ async function signInUser(ctx, data) {
   // const userData = JSON.parse(JSON.stringify(user));
   // delete userData.password;
   // delete userData.__v;
- const userData = deleteObj(user);
+ const userData = secureUserData(user);
   return [userData, token, true];
 }
 
