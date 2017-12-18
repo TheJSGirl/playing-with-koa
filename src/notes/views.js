@@ -1,10 +1,12 @@
 const operations = require('./operations');
 const errors = require('njs/lib/errors');
+// const response = require('../../utils/responses');
 
 async function getAll(ctx) {
   console.log('**user details => ', ctx.request.user); // made by checkAuth
   // console.log(ctx);
-  const result = await operations.getData();
+  const result = await operations.getData(ctx);
+  console.log('-------------------result', result);
   ctx.successJson(result);
 }
 

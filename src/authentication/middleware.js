@@ -4,6 +4,7 @@ const User = require('../users/model');
 const deleteObj = require('../../utils/deleteObject');
 
 module.exports = async function checkAuth(ctx, next) {
+  console.log('--------------middleware ctx', ctx);
   if (!ctx.request.header.token) {
     throw new errors.UnauthorizedAccess('Please login to continue');
   }
