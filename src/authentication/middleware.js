@@ -1,6 +1,7 @@
 const errors = require('njs/lib/errors');
 const Token = require('../authentication/model');
 const User = require('../users/model');
+const deleteObj = require('../../utils/deleteObject');
 
 module.exports = async function checkAuth(ctx, next) {
   if (!ctx.request.header.token) {
@@ -14,12 +15,14 @@ module.exports = async function checkAuth(ctx, next) {
   if (!isValid) {
     throw new errors.UnauthorizedAccess('Token expired');
   }
-  // get user from DB 
+  // get user from DB
   const user = await User.findOne({ _id: tokenFromDb.user });
 
-  const userData = JSON.parse(JSON.stringify(user));
-  delete userData.password;
-  delete userData.__v;  
+  // const userData = JSON.parse(JSON.stringify(user));
+  // delete userData.password;
+  // delete userData.__v;
+
+  const userData = deleteObj(user);
 
   ctx.request.user = userData;
   next();

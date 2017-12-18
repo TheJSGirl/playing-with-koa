@@ -4,6 +4,7 @@ const validator = require('validator');
 const errors = require('njs/lib/errors');
 const bcrypt = require('bcrypt');
 const tokenGenator = require('../../utils/tokenGenerator');
+const deleteObj = require('../../utils/deleteObject');
 
 async function createUser(ctx, data) {
   console.log('**data inside create user=>', data);
@@ -45,7 +46,7 @@ async function signInUser(ctx, data) {
 
   // check user exist
   if (!user) {
-    throw new errors.NotFound('user not exist');
+    throw new errors.NotFound('Please signup to sign-in to your account');
   }
   const isValidPassword = bcrypt.compareSync(`${password}`, user.password);
 
@@ -61,14 +62,15 @@ async function signInUser(ctx, data) {
   await newToken.save();
 
   // delete password field from user object
-  const userData = JSON.parse(JSON.stringify(user));
-  delete userData.password;
-  delete userData.__v;
+  // const userData = JSON.parse(JSON.stringify(user));
+  // delete userData.password;
+  // delete userData.__v;
+ const userData = deleteObj(user);
   return [userData, token, true];
 }
 
 async function signOutUser(token) {
-  console.log('token-----',token);
+  console.log('token-----', token);
   await Token.findOneAndRemove({ token });
 
   // how to delete session explicitly
