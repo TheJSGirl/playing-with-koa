@@ -27,7 +27,7 @@ async function postData(ctx) {
   const data = ctx.request.fields;
   console.log('----data from request', data);
   const result = await operations.create(ctx, data);
-  ctx.successJson(ctx, result, 200);
+  ctx.successJson(result, 200);
 }
 
 async function del(ctx) {
