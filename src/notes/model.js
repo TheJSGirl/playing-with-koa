@@ -7,7 +7,11 @@ const NoteSchema = new Schema({
     type: String,
     required: [true, 'notes is required'],
   },
-
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
 });
 
 const Notes = mongoose.model('note', NoteSchema);
